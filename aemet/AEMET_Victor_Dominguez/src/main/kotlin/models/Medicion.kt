@@ -14,11 +14,11 @@ class Medicion(
     val horaMin: LocalTime,
     val precipitacion: Double
 ) {
-    lateinit var fechaMedicion: LocalDate
+//    lateinit var fechaMedicion: LocalDate
 
     override fun toString(): String {
-        return "${AZUL}Fecha$RESET: $fechaMedicion,\t" +
-                "${AZUL}Lugar$RESET: $lugar,\t" +
+//        return "${AZUL}Fecha$RESET: $fechaMedicion,\t" +
+                return "${AZUL}Lugar$RESET: $lugar,\t" +
                 "${AZUL}Provincia$RESET: $provincia,\t" +
                 "${AZUL}Temperatura Máxima$RESET: $tempMax,\t" +
                 "${AZUL}Hora Temp. Máx.$RESET: $horaMax,\t" +
