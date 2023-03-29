@@ -41,9 +41,9 @@ data class MedicionDto(
     val precipitacion: Double = 0.0
 )
 
-@Root(name = "listaMediciones")
+@Root(name = "mediciones")
 data class MedicionesListDto(
-    @field:ElementList(name = "mediciones")
-    @param:ElementList(name = "mediciones")
+    @field:ElementList(name = "mediciones", inline = true)
+    @param:ElementList(name = "mediciones", inline = true)
     val mediciones: List<MedicionDto>
 )

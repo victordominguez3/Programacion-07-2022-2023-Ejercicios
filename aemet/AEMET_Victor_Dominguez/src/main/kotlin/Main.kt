@@ -14,7 +14,9 @@ fun main(args: Array<String>) {
 
     val controller = CsvController(CsvRepositoryMemory())
 
+    controller.escribirCSVcompleto()
     controller.escribirXml()
+    controller.escribirJson()
 
 }
 

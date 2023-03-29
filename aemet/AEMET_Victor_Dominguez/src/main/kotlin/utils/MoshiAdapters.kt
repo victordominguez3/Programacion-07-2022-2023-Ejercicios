@@ -23,3 +23,5 @@ class LocalDateAdapter : JsonAdapter<LocalDate>() {
         writer.jsonValue(value.toString())
     }
 }
+
+fun <T> JsonAdapter<T>.toPrettyJson(value: T): String = this.indent("  ").toJson(value)

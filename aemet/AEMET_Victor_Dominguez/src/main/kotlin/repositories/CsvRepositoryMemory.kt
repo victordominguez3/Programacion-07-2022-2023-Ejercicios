@@ -10,6 +10,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import models.Medicion
 import org.simpleframework.xml.core.Persister
 import toLocalTime
+import utils.toPrettyJson
 import java.io.File
 import java.time.LocalDate
 import java.time.LocalTime
@@ -19,7 +20,7 @@ class CsvRepositoryMemory: CsvRepository<Medicion> {
     var mediciones = leerCSVs()
 
     override fun leerCSVs(): List<Medicion> {
-        val rutaCarpeta = "${System.getProperty("user.dir")}${File.separator}data"
+        val rutaCarpeta = "${System.getProperty("user.dir")}${File.separator}src${File.separator}main${File.separator}resources"
         val carpeta = File(rutaCarpeta)
         val archivos = carpeta.listFiles()
         val regex = Regex("Aemet[0-9]{8}\\.csv")
@@ -27,7 +28,7 @@ class CsvRepositoryMemory: CsvRepository<Medicion> {
         val listaMediciones = mutableListOf<Medicion>()
 
         for (archivo in archivos!!) {
-            if (archivo.name.matches(regex)) { //si el archivo cumple la expresion regular, se lee
+            if (archivo.name.matches(regex)) { //si el archivo no cumple la expresion regular, no entra
                 val fecha = generarFecha(archivo)
                 listaMediciones += archivo.readLines()
                     .map { linea -> linea.split(";") }
@@ -125,7 +126,7 @@ class CsvRepositoryMemory: CsvRepository<Medicion> {
     }
 
     override fun escribirCSVcompleto(): File {
-        val path = "${System.getProperty("user.dir")}${File.separator}data${File.separator}AemetCompleto.csv"
+        val path = "${System.getProperty("user.dir")}${File.separator}data${File.separator}AemetCompletoCsv.csv"
         val fichero = File(path)
 
         fichero.writeText("Fecha;Lugar;Provincia;Temp. Máx;Hora Máx;Temp. Min;Hora Min;Precipitación\n")
@@ -231,7 +232,7 @@ class CsvRepositoryMemory: CsvRepository<Medicion> {
 
         val jsonAdapter = moshi.adapter<List<Medicion>>()
 
-        fichero.writeText(jsonAdapter.toJson(mediciones))
+        fichero.writeText(jsonAdapter.toPrettyJson(mediciones))
 
         return fichero
     }
