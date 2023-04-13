@@ -29,7 +29,7 @@ class CsvRepositoryMemory: CsvRepository<Medicion> {
 
         for (archivo in archivos!!) {
             if (archivo.name.matches(regex)) { //si el archivo no cumple la expresion regular, no entra
-                val fecha = generarFecha(archivo)
+                val fecha = extraerFecha(archivo)
                 listaMediciones += archivo.readLines()
                     .map { linea -> linea.split(";") }
                     .map { columnas ->
@@ -117,7 +117,7 @@ class CsvRepositoryMemory: CsvRepository<Medicion> {
         return listaMediciones
     }
 
-    private fun generarFecha(archivo: File): LocalDate {
+    private fun extraerFecha(archivo: File): LocalDate {
         val nombreArchivo = archivo.name
         val anyo = "${nombreArchivo[5]}${nombreArchivo[6]}${nombreArchivo[7]}${nombreArchivo[8]}".toInt()
         val mes = "${nombreArchivo[9]}${nombreArchivo[10]}".toInt()
@@ -125,7 +125,7 @@ class CsvRepositoryMemory: CsvRepository<Medicion> {
         return LocalDate.of(anyo, mes, dia)
     }
 
-    override fun escribirCSVcompleto(): File {
+    override fun escribirCSVcompleto() {
         val path = "${System.getProperty("user.dir")}${File.separator}data${File.separator}AemetCompletoCsv.csv"
         val fichero = File(path)
 
@@ -133,8 +133,6 @@ class CsvRepositoryMemory: CsvRepository<Medicion> {
         mediciones.forEach {
             fichero.appendText("${it.fechaMedicion}" + ";${it.lugar};${it.provincia};${it.tempMax};${it.horaMax};${it.tempMin};${it.horaMin};${it.precipitacion}\n")
         }
-
-        return fichero
     }
 
     override fun tempMaxPorDia(): Map<Int, Double> {

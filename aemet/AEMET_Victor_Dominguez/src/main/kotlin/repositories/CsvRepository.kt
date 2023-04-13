@@ -4,7 +4,7 @@ import java.io.File
 
 interface CsvRepository<T> {
     fun leerCSVs(): List<T>
-    fun escribirCSVcompleto(): File
+    fun escribirCSVcompleto()
     fun tempMaxPorDia(): Map<Int, Double>
     fun tempMinPorDia(): Map<Int, Double>
     fun tempMaxPorLugar(): Map<String, Double>
