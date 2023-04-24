@@ -1,10 +1,10 @@
 package repositories
 
-import java.io.File
-
-interface CsvRepository<T> {
-    fun leerCSVs(): List<T>
-    fun escribirCSVcompleto()
+interface MedicionesRepository<T> {
+    fun importar(list: List<T>)
+    fun exportar(): List<T>
+    fun buscarTodos(): List<T>
+    fun guardar(item: T): T?
     fun tempMaxPorDia(): Map<Int, Double>
     fun tempMinPorDia(): Map<Int, Double>
     fun tempMaxPorLugar(): Map<String, Double>
@@ -21,6 +21,4 @@ interface CsvRepository<T> {
     fun mediaTemperaturaMinimaTotal(): Double
     fun lugaresTempMaxAntesDe15PorDia(): Map<Int, List<String>>
     fun lugaresTempMinDespuesDe1730PorDia(): Map<Int, List<String>>
-    fun escribirJson(): File
-    fun escribirXml(): File
 }

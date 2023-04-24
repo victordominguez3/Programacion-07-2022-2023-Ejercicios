@@ -1,17 +1,48 @@
 package controllers
 
+import MORADO
+import RESET
+import com.github.michaelbull.result.Err
+import com.github.michaelbull.result.Ok
+import com.github.michaelbull.result.Result
+import exceptions.MedicionException
+import exceptions.MedicionNoValidaException
 import models.Medicion
-import repositories.CsvRepository
-import java.io.File
+import mu.KotlinLogging
+import repositories.MedicionesRepository
+import services.storage.MedicionStorageService
+import validators.validar
 
-class CsvController(private val repository: CsvRepository<Medicion>) {
+private val logger = KotlinLogging.logger {}
 
-    fun leerCSVs(): List<Medicion> {
-        return repository.leerCSVs()
+class MedicionesController(
+    private val repository: MedicionesRepository<Medicion>,
+    private val storage: MedicionStorageService
+) {
+
+    init {
+//        importar()
     }
 
-    fun escribirCSVcompleto(): File {
-        return repository.escribirCSVcompleto()
+    fun importar() {
+        logger.debug { "${MORADO}Controller$RESET -> Importar al repositorio desde storage" }
+        repository.importar(storage.importar())
+    }
+
+    fun exportar() {
+        logger.debug { "${MORADO}Controller$RESET -> Exportar a storage desde el repositorio" }
+        storage.exportar(repository.exportar())
+    }
+
+    fun buscarTodos(): List<Medicion> {
+        logger.debug { "${MORADO}Controller$RESET -> Buscar todos" }
+        return repository.buscarTodos()
+    }
+
+    fun guardar(item: Medicion): Result<Medicion, MedicionException> {
+        logger.debug { "${MORADO}Controller$RESET -> Guardar" }
+        return repository.guardar(item).also { item.validar() }?. let { Ok(it) }
+            ?: Err(MedicionNoValidaException("Medición no válida"))
     }
 
     fun tempMaxPorDia(): Map<Int, Double> {
@@ -76,13 +107,5 @@ class CsvController(private val repository: CsvRepository<Medicion>) {
 
     fun lugaresTempMinDespuesDe1730PorDia(): Map<Int, List<String>> {
         return repository.lugaresTempMinDespuesDe1730PorDia()
-    }
-
-    fun escribirJson(): File {
-        return repository.escribirJson()
-    }
-
-    fun escribirXml(): File {
-        return repository.escribirXml()
     }
 }
