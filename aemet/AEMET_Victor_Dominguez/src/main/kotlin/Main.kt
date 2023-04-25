@@ -11,18 +11,5 @@ const val RESET = "\u001B[0m"
 
 fun main(args: Array<String>) {
 
-    val csvController = MedicionesController(MedicionesRepositoryMemory(), CsvService)
-    val jsonController = MedicionesController(MedicionesRepositoryMemory(), JsonService)
-    val xmlController = MedicionesController(MedicionesRepositoryMemory(), XmlService)
-
-    csvController.importar()
-    val lista = csvController.buscarTodos()
-    for (i in lista) {
-        jsonController.guardar(i)
-        xmlController.guardar(i)
-    }
-    csvController.exportar()
-    jsonController.exportar()
-    xmlController.exportar()
 }
 

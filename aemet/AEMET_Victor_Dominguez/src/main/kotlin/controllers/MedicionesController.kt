@@ -21,7 +21,8 @@ class MedicionesController(
 ) {
 
     init {
-//        importar()
+        logger.debug { "${MORADO}Controller$RESET -> Importación de datos inicial" }
+        importar()
     }
 
     fun importar() {
