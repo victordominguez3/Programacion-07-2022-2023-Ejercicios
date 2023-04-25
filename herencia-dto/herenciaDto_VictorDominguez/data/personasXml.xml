@@ -1,0 +1,102 @@
+<personas>
+   <persona tipo="Profesor">
+      <nombre>Lucas</nombre>
+      <edad></edad>
+      <modulo>Entornos</modulo>
+   </persona>
+   <persona tipo="Profesor">
+      <nombre>Pedro</nombre>
+      <edad></edad>
+      <modulo>Entornos</modulo>
+   </persona>
+   <persona tipo="Alumno">
+      <nombre>Rosa</nombre>
+      <edad>39</edad>
+      <modulo></modulo>
+   </persona>
+   <persona tipo="Alumno">
+      <nombre>Pedro</nombre>
+      <edad>30</edad>
+      <modulo></modulo>
+   </persona>
+   <persona tipo="Alumno">
+      <nombre>Jose Miguel</nombre>
+      <edad>24</edad>
+      <modulo></modulo>
+   </persona>
+   <persona tipo="Alumno">
+      <nombre>Jose Miguel</nombre>
+      <edad>37</edad>
+      <modulo></modulo>
+   </persona>
+   <persona tipo="Alumno">
+      <nombre>Pablo</nombre>
+      <edad>24</edad>
+      <modulo></modulo>
+   </persona>
+   <persona tipo="Alumno">
+      <nombre>Rosa</nombre>
+      <edad>33</edad>
+      <modulo></modulo>
+   </persona>
+   <persona tipo="Alumno">
+      <nombre>Lucas</nombre>
+      <edad>27</edad>
+      <modulo></modulo>
+   </persona>
+   <persona tipo="Alumno">
+      <nombre>Pedro</nombre>
+      <edad>19</edad>
+      <modulo></modulo>
+   </persona>
+   <persona tipo="Alumno">
+      <nombre>Lucía</nombre>
+      <edad>23</edad>
+      <modulo></modulo>
+   </persona>
+   <persona tipo="Alumno">
+      <nombre>Pedro</nombre>
+      <edad>20</edad>
+      <modulo></modulo>
+   </persona>
+   <persona tipo="Alumno">
+      <nombre>Natalia</nombre>
+      <edad>37</edad>
+      <modulo></modulo>
+   </persona>
+   <persona tipo="Alumno">
+      <nombre>Juan</nombre>
+      <edad>25</edad>
+      <modulo></modulo>
+   </persona>
+   <persona tipo="Alumno">
+      <nombre>Juan</nombre>
+      <edad>20</edad>
+      <modulo></modulo>
+   </persona>
+   <persona tipo="Alumno">
+      <nombre>Pedro</nombre>
+      <edad>29</edad>
+      <modulo></modulo>
+   </persona>
+   <persona tipo="Alumno">
+      <nombre>Lucas</nombre>
+      <edad>19</edad>
+      <modulo></modulo>
+   </persona>
+   <persona tipo="Alumno">
+      <nombre>Rebeca</nombre>
+      <edad>39</edad>
+      <modulo></modulo>
+   </persona>
+   <persona tipo="Alumno">
+      <nombre>Rebeca</nombre>
+      <edad>30</edad>
+      <modulo></modulo>
+   </persona>
+   <persona tipo="Alumno">
+      <nombre>Sonia</nombre>
+      <edad>39</edad>
+      <modulo></modulo>
+   </persona>
+</personas>
